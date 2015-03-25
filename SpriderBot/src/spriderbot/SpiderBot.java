@@ -5,8 +5,9 @@
  */
 package spriderbot;
 
-import DataBase.Lista;
-import DataBase.Nodo;
+import Logica.Lista;
+import Logica.Nodo;
+import java.io.IOException;
 import java.net.Socket;
 
 public class SpiderBot {
@@ -18,12 +19,14 @@ public class SpiderBot {
     private Lista listUrls;
     private String URl;
     private Socket socket;
+    
     public SpiderBot(){
         lectorXml= new ReadXml();
         lectorXml.readAll(1);
         lectorXml.readAll(0);
         extrac(lectorXml.getSpAtri());
         listUrls=lectorXml.getUrls();
+        setConnect();
     }
     
     private void extrac(Lista list){
@@ -39,7 +42,14 @@ public class SpiderBot {
     }
     
     public void setConnect(){
-        socket= new Socket();
+        try{
+        URl= (String) listUrls.getHead().getNext().getData();
+        socket= new  Socket("www.google.com", 80);
+        System.out.println(socket.getInetAddress());
+        socket.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         
     }
     public void print(){
