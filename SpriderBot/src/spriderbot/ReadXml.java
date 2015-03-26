@@ -5,7 +5,7 @@
  */
 package spriderbot;
 
-import Logica.Lista;
+import Logica.ListaSpiderBot;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,14 +21,24 @@ public class ReadXml <dp> {
     private DocumentBuilder Dbuilder;
     private DocumentBuilderFactory Dfactory;
     private Document docu;
-    private Lista Urls;
-    private Lista SpAtri;
+    private ListaSpiderBot Urls;
+    private ListaSpiderBot SpAtri;
     
+    /**
+     * contructor de la clase
+     * nos inicializa las listas
+     * que se van a estar urilizando
+     */
     public ReadXml(){
-        Urls= new Lista();
-        SpAtri= new Lista();
+        Urls= new ListaSpiderBot();
+        SpAtri= new ListaSpiderBot();
     }
-    
+    /**
+     * lector de archivos xml, recibe 
+     * como parametro un integer que nos indica 
+     * a que cosas va a leer del xml
+     * @param diferencial 
+     */
     public void readAll(int diferencial){
         try{
             path=new File("C:\\Users\\Ellioth\\Documents\\NetBeansProjects\\New Folder\\SpriderBot\\src\\Xmls\\WebPages.xml");
@@ -41,8 +51,8 @@ public class ReadXml <dp> {
                 Node nodoL = lista.item(0);
                 if(nodoL.getNodeType()==Node.ELEMENT_NODE){
                     Element elm= (Element)nodoL;
-                    Urls.insertHead(elm.getElementsByTagName("url").item(0).getTextContent());
-                    Urls.insertHead(elm.getElementsByTagName("url").item(1).getTextContent());
+                    Urls.enQueue(elm.getElementsByTagName("url").item(0).getTextContent(),0);
+                    Urls.enQueue(elm.getElementsByTagName("url").item(1).getTextContent(),0);
                 }
             }
             else{
@@ -50,9 +60,9 @@ public class ReadXml <dp> {
                 Node nodoL = lista.item(0);
                 if(nodoL.getNodeType()==Node.ELEMENT_NODE){
                     Element elm= (Element)nodoL;
-                    SpAtri.insertHead(Integer.parseInt(elm.getElementsByTagName("maxthreads").item(0).getTextContent()));
-                    SpAtri.insertHead(Integer.parseInt(elm.getElementsByTagName("recursivity").item(0).getTextContent()));
-                    SpAtri.insertHead(Integer.parseInt(elm.getElementsByTagName("reindex").item(0).getTextContent()));
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("maxthreads").item(0).getTextContent()),0);
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("recursivity").item(0).getTextContent()),0);
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("reindex").item(0).getTextContent()),0);
                 }
             }
         }catch(Exception e){
@@ -60,11 +70,16 @@ public class ReadXml <dp> {
         }
     }
     
-    public Lista getSpAtri(){
+    /**
+     * metodo que retorna una lista de
+     * atributos en 
+     * @return 
+     */
+    public ListaSpiderBot getSpAtri(){
         return this.SpAtri;
     }
     
-    public Lista getUrls(){
+    public ListaSpiderBot getUrls(){
         return this.Urls;
     }
 }

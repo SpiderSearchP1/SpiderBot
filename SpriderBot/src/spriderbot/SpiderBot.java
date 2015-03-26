@@ -5,7 +5,7 @@
  */
 package spriderbot;
 
-import Logica.Lista;
+import Logica.ListaSpiderBot;
 import Logica.Nodo;
 import java.io.IOException;
 import java.net.Socket;
@@ -16,7 +16,7 @@ public class SpiderBot {
     private int recursivity;
     private int reindex;
     private ReadXml lectorXml;
-    private Lista listUrls;
+    private ListaSpiderBot listUrls;
     private String URl;
     private Socket socket;
     
@@ -29,7 +29,7 @@ public class SpiderBot {
         setConnect();
     }
     
-    private void extrac(Lista list){
+    private void extrac(ListaSpiderBot list){
         try{
             Nodo tmp= list.getHead();
             reindex= (int)tmp.getData();
@@ -44,7 +44,7 @@ public class SpiderBot {
     public void setConnect(){
         try{
         URl= (String) listUrls.getHead().getNext().getData();
-        socket= new  Socket("www.google.com", 80);
+        socket= new  Socket(URl, 80);
         System.out.println(socket.getInetAddress());
         socket.close();
         }catch(IOException e){
