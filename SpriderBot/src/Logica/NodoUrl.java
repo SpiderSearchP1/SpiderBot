@@ -7,13 +7,20 @@
 package Logica;
 
 /**
- *
+ * esta clase nos sirve para ir haciendo los nodos que estaran 
+ * en la lista para los urls a analizar.
+ * 
  * @author Ellioth
  */
 public class NodoUrl <dp> extends Nodo {
 
-    private int profundida;
+    private dp profundida;
     
+    /**
+     * establece en un nodo el urls para hacer las busquedas con el 
+     * spiderbot.
+     * @param pData 
+     */
     public NodoUrl(dp pData) {
         super(pData);
     }
@@ -24,18 +31,8 @@ public class NodoUrl <dp> extends Nodo {
     }
 
     @Override
-    public void setPrev(Nodo pNodo) {
-        super.setPrev(pNodo); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void setNext(Nodo pNodo) {
         super.setNext(pNodo); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Nodo getPrev() {
-        return super.getPrev(); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -43,7 +40,20 @@ public class NodoUrl <dp> extends Nodo {
         return super.getNext(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void setDepth(int depth){
+    /**
+     * devuelve el valor de la profundidad del url
+     * @return profundidad
+     */
+    public dp geDepth(){
+        return profundida;
+    }
+    
+    /**
+     * ingresa el valor de la profundiad perteneciente a la url que se asigna 
+     * en este nodo.
+     * @param depth 
+     */
+    public void setDepth(dp depth){
         profundida=depth;
     }
 }

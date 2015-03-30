@@ -7,16 +7,31 @@
 package Logica;
 
 /**
- *
+ *  metodo para ir creando nodos del tipo Keyword para la bases 
+ * de datos que almacenara todas estas a su vez.
  * @author Ellioth
  */
 public class NodoKeyword <dp> extends Nodo{
 
-    private String [] Urlpadre;
-    private int [] countPpage;
-    private int indice;
-    private int MaxArray;
-    private int growPor;
+    private ListaSdoble Urlpadre;
+    private ListaSdoble countPpage;
+    private Nodo indiceCt;
+    
+    /**
+     * contructor que recibe un pData que seria lo que se quiere ingresar
+     * en este caso la palabra; recibe un Url padre que nos indica de que 
+     * url proviene esa palabra.
+     * @param pData
+     * @param Urlpadre 
+     */
+    public NodoKeyword(dp pData, String Urlpadre) {
+        super(pData);
+        this.Urlpadre= new ListaSdoble();
+        this.countPpage= new ListaSdoble();
+        this.Urlpadre.enQueue(Urlpadre);
+        this.countPpage.enQueue(1);
+        indiceCt= this.countPpage.getHead();
+    }
     
     @Override
     public Object getData() {
@@ -43,42 +58,40 @@ public class NodoKeyword <dp> extends Nodo{
         return super.getNext(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public NodoKeyword(dp pData, String Urlpadre) {
-        super(pData);
-        indice=0;
-        MaxArray=10;
-        growPor=30;
-        this.Urlpadre= new String[MaxArray];
-        this.Urlpadre[indice]=Urlpadre;
-        countPpage= new int[MaxArray];
-    }
+    /**
+     * metodo para ingresar un nuevo padre a la keyword.
+     * @param Urlpadre dato de entra del Url padre
+     */
     public void setPadre(String Urlpadre){
-        if (indice==MaxArray)
-            resize();
-        this.Urlpadre[indice]=Urlpadre;
-        indice++;
+        indiceCt.setNext(new Nodo(0));
+        indiceCt= indiceCt.getNext();
+        this.Urlpadre.enQueue(Urlpadre);
+        upCount();
     }
     
+    public ListaSdoble getPadres(){
+        return Urlpadre;
+    }
+    
+    /**
+     * metodo para aumentar la cuenta de la cantidad de veces que 
+     * se encontro la palabra en la pagina indicada.
+     */
     public void upCount(){
-        countPpage[indice]=(countPpage[indice])+1;
+        indiceCt.setData((int)indiceCt.getData()+1);
     }
     
+    /**
+     * metodo pra imprimir el ocntenido del nodo, en este caso imprime
+     * los padres del nodo y su cantidad de veces aparecida.
+     */
     public void printPadre(){
-        for(int i=0; i<MaxArray;i++){
-            System.out.println(Urlpadre[i]+"..Cantidades de veces Encontrada la palabra: "+countPpage[i]);
+        Nodo tmp1= Urlpadre.getHead();
+        Nodo tmp2= countPpage.getHead();
+        while(tmp1!=null || tmp2!=null){
+            System.out.println(tmp1.getData()+"..Cantidades de veces Encontrada la palabra: "+tmp2.getData());
+            tmp1= tmp1.getNext();
+            tmp2= tmp2.getNext();
         }
-    }
-    
-    private void resize(){
-        int NewMaxArray= MaxArray+(MaxArray*(growPor/100));
-        String [] tmp= new String [NewMaxArray];
-        int [] tmp2= new int[NewMaxArray];
-        for(int i=0; i<MaxArray;i++){
-            tmp[i]=Urlpadre[i];
-            tmp2[i]=countPpage[i];
-        }
-        MaxArray= NewMaxArray;
-        Urlpadre=tmp;
-        countPpage=tmp2;
     }
 }

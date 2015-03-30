@@ -6,50 +6,31 @@
 package Logica;
 
 /**
- *
+ * calse de tipo lista doble para ir haciendo la base de datos 
+ * para las palabras de busqueda.
+ * @param <dp> generico para la clase
  * @author Ellioth
  */
-public class ListaKeywords <dp>{
+public class ListaKeywords <dp> extends ListaSdoble{
+    
     private NodoKeyword _head;
     private NodoKeyword _tail;
+    
     /**
-     * metodo para retornar el _head de una lista
-     * @return _head
+     * metodo para enconlar especial que establece el padre o los
+     * padres de cada uno de los Nodos.
+     * @param dato
+     * @param Urlpadre 
      */
-    public NodoKeyword getHead(){
-        return _head;
-    }
-    
-    public void insertHead(dp dato, String UrlPadre){
-        Nodo tmp1= _head;
-        _head=new NodoKeyword(dato,UrlPadre);
-        _head.setNext(tmp1);
-    }
-    
-    public dp find(dp dato){
-        Nodo tmp =_head;
-        while(tmp!=null||tmp.getData().equals(dato)){
-            tmp=tmp.getNext();
+    public void enQueue(dp dato,String Urlpadre){
+        if(_head==null){
+            _head=_tail= new NodoKeyword(dato,Urlpadre);
         }
-        return (dp)tmp.getData();
-    }
-    
-    public void delete(dp dato){
-        Nodo tmp=_head;
-        Nodo tmp2=tmp;
-        while(tmp!=null|| !tmp.getData().equals(dato)){
-            tmp2=tmp;
-            tmp=tmp.getNext();
-        }
-        if(tmp==null)
-            return;
-        else if(tmp==tmp2 && tmp.getData().equals(dato))
-            _head=(NodoKeyword)_head.getData();
         else{
-            if(tmp2.getData().equals(dato))
-                tmp2.setNext(tmp.getNext());
-            else
-                return;
+            NodoKeyword tmp1=_tail;
+            tmp1.setNext( new NodoKeyword(dato, Urlpadre));
+            _tail=(NodoKeyword)tmp1.getNext();
+            _tail.setPrev(tmp1);
         }
     }
     
@@ -64,24 +45,36 @@ public class ListaKeywords <dp>{
         
     }
     
+    /**
+     * metodo par aumentar la cuenta para cada uno de los nodos
+     * de la cantidad de veces que le encontro en una pagina web 
+     * a la palabra
+     */
     public void upCount(){
-        _head.upCount();
+        _tail.upCount();
     }
     
+    /**
+     * metodo para ingresar un nuevo padre aparte del padre proviente 
+     * de la primera pagina o de paginas anteriores.
+     * @param UrlPadre 
+     */
     public void setPadre(String UrlPadre){
-        _head.setPadre(UrlPadre);
+        _tail.setPadre(UrlPadre);
     }
     
+    /**
+     * pruebas para la lista**/
     public static void main(String[] args) {
         ListaKeywords l= new ListaKeywords();
-        l.insertHead("hola","www.wikipedia.org/java/oracle/sunMicroSystem");
+        l.enQueue("hola","www.wikipedia.org/java/oracle/sunMicroSystem");
         l.upCount();
         l.upCount();
         l.upCount();
         l.setPadre("www.stackoverflow.net/ask/Hola_mundo");
         l.upCount();
         l.upCount();
-        l.insertHead("mundo", "www.wikipedia.org/java/oracle/Micro_Sun_System");
+        l.enQueue("mundo", "www.wikipedia.org/java/oracle/Micro_Sun_System");
         l.upCount();
         l.upCount();
         l.setPadre("www.stackoverflow.net/ask/Hola_mundo");
@@ -89,7 +82,7 @@ public class ListaKeywords <dp>{
         l.upCount();
         l.upCount();
         l.upCount();
-        l.insertHead("nueva", "www.wikipedia.org/java/oracle/sun_Micro_System");
+        l.enQueue("nueva", "www.wikipedia.org/java/oracle/sun_Micro_System");
         l.upCount();
         l.upCount();
         l.upCount();
@@ -97,7 +90,7 @@ public class ListaKeywords <dp>{
         l.upCount();
         l.upCount();
         l.upCount();
-        l.insertHead("lista", "www.wikipedia.org/java/oracle/sun_Micro_System");
+        l.enQueue("lista", "www.wikipedia.org/java/oracle/sun_Micro_System");
         l.upCount();
         l.upCount();
         l.upCount();
@@ -110,4 +103,6 @@ public class ListaKeywords <dp>{
         l.upCount();
         l.print();
     }
+    /*
+    */
 }
