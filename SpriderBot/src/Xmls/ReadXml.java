@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spriderbot;
+package Xmls;
 
-import Logica.ListaSpiderBot;
+import Logica.ListaSdoble;
+import Logica.ListaUrls;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,14 +16,14 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class ReadXml <dp> {
+public class ReadXml {
     
     private File path;
     private DocumentBuilder Dbuilder;
     private DocumentBuilderFactory Dfactory;
     private Document docu;
-    private ListaSpiderBot Urls;
-    private ListaSpiderBot SpAtri;
+    private ListaUrls Urls;
+    private ListaSdoble SpAtri;
     
     /**
      * contructor de la clase
@@ -30,8 +31,8 @@ public class ReadXml <dp> {
      * que se van a estar urilizando
      */
     public ReadXml(){
-        Urls= new ListaSpiderBot();
-        SpAtri= new ListaSpiderBot();
+        Urls= new ListaUrls();
+        SpAtri= new ListaSdoble();
     }
     /**
      * lector de archivos xml, recibe 
@@ -41,10 +42,10 @@ public class ReadXml <dp> {
      */
     public void readAll(int diferencial){
         try{
-            path=new File("C:\\Users\\Ellioth\\Documents\\NetBeansProjects\\New Folder\\SpriderBot\\src\\Xmls\\WebPages.xml");
+            this.path=new File("C:\\Users\\Ellioth\\Documents\\NetBeansProjects\\New Folder\\SpriderBot\\src\\Xmls\\WebPages.xml");
             Dfactory = DocumentBuilderFactory.newInstance();
             Dbuilder= Dfactory.newDocumentBuilder();
-            docu= Dbuilder.parse(path);
+            docu= Dbuilder.parse(this.path);
             docu.getDocumentElement().normalize();
             if(diferencial==1){
                 NodeList lista = docu.getElementsByTagName("targets");
@@ -60,9 +61,9 @@ public class ReadXml <dp> {
                 Node nodoL = lista.item(0);
                 if(nodoL.getNodeType()==Node.ELEMENT_NODE){
                     Element elm= (Element)nodoL;
-                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("maxthreads").item(0).getTextContent()),0);
-                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("recursivity").item(0).getTextContent()),0);
-                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("reindex").item(0).getTextContent()),0);
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("maxthreads").item(0).getTextContent()));
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("recursivity").item(0).getTextContent()));
+                    SpAtri.enQueue(Integer.parseInt(elm.getElementsByTagName("reindex").item(0).getTextContent()));
                 }
             }
         }catch(Exception e){
@@ -71,15 +72,19 @@ public class ReadXml <dp> {
     }
     
     /**
-     * metodo que retorna una lista de
-     * atributos en 
+     * metodo que retorna una lista de atributos del spiderbot puestos en el xml
+     * 
      * @return 
      */
-    public ListaSpiderBot getSpAtri(){
+    public ListaSdoble getSpAtri(){
         return this.SpAtri;
     }
     
-    public ListaSpiderBot getUrls(){
+    /**
+     * retorna la lista de los urls targets en el xml
+     * @return 
+     */
+    public ListaUrls getUrls(){
         return this.Urls;
     }
 }
