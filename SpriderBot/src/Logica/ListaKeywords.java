@@ -79,7 +79,7 @@ public class ListaKeywords <dp> extends ListaSdoble{
     }
     
     /**
-     * pruebas para la lista**/
+     * pruebas para la lista
     public static void main(String[] args) {
         ListaKeywords l= new ListaKeywords();
         l.enQueue("hola","www.wikipedia.org/java/oracle/sunMicroSystem");
@@ -118,6 +118,5 @@ public class ListaKeywords <dp> extends ListaSdoble{
         l.upCount();
         l.print();
     }
-    /*
     */
 }

@@ -20,7 +20,7 @@ public class Cliente extends Thread{
     private String mensaje;
     private  int id;;
     
-    public Cliente(String ip, int puerto, int id){
+    public Cliente(String ip, int puerto){
         mensaje="";
         this.ip= ip;
         bandera= true;
@@ -35,16 +35,16 @@ public class Cliente extends Thread{
             //Datos_Entrada= new DataInputStream(socket.getInputStream());
             Datos_Salida= new  DataOutputStream(socket.getOutputStream());
             //if(mensaje.length()>0){}
-            System.out.println("escriba un mensaje");
-            Datos_Salida.writeUTF((new Scanner(System.in)).nextLine());
-            Datos_Salida.flush();
-            System.out.println("usuario"+ id + "mensaje enviado");
-            mensaje= Datos_Salida.toString();
-            if(mensaje.equals("out")){
-                //Datos_Entrada.close();    
-                Datos_Salida.close();
-                socket.close();
+            while(!mensaje.equals("out")){
+                System.out.println("escriba un mensaje");
+                Datos_Salida.writeUTF((new Scanner(System.in)).nextLine());
+                Datos_Salida.flush();
+                System.out.println("usuario"+ id + "mensaje enviado");
+                mensaje= Datos_Salida.toString();
             }
+            //Datos_Entrada.close();    
+            Datos_Salida.close();
+            socket.close();
         }catch(IOException e){
             System.out.print(e);
         }
@@ -63,7 +63,7 @@ public class Cliente extends Thread{
     }
     
     public static void main(String[] args) {
-        Cliente id= new Cliente("192.168.1.104", 5005,2 );
+        Cliente id= new Cliente("192.168.1.104", 5005);
         id.start();
     }
    

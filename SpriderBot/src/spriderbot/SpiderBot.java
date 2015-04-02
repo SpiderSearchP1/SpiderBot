@@ -5,7 +5,7 @@
  */
 package spriderbot;
 
-import Xmls.ReadXml;
+import Xmls.ReadUrls;
 import Logica.ListaSdoble;
 import Logica.ListaUrls;
 import Logica.Nodo;
@@ -22,7 +22,7 @@ public class SpiderBot {
     private int maxthreads;
     private int recursivity;
     private int reindex;
-    private ReadXml lectorXml;
+    private ReadUrls lectorXml;
     private ListaUrls listUrls;
     private String URl;
     private Socket socket;
@@ -33,7 +33,7 @@ public class SpiderBot {
      * busquedas
      */
     public SpiderBot(){
-        lectorXml= new ReadXml();
+        lectorXml= new ReadUrls();
         lectorXml.readAll(1);
         lectorXml.readAll(0);
         extrac(lectorXml.getSpAtri());

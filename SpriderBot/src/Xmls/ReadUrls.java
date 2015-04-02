@@ -16,7 +16,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class ReadXml {
+public class ReadUrls {
     
     private File path;
     private DocumentBuilder Dbuilder;
@@ -30,7 +30,7 @@ public class ReadXml {
      * nos inicializa las listas
      * que se van a estar urilizando
      */
-    public ReadXml(){
+    public ReadUrls(){
         Urls= new ListaUrls();
         SpAtri= new ListaSdoble();
     }

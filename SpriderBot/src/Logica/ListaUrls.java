@@ -64,7 +64,6 @@ public class ListaUrls<dp> extends ListaSdoble{
     /**
      * prueba unitaria para la lista de urls.
      * @param args 
-     */
     public static void main(String[] args) {
         ListaUrls l= new ListaUrls();
         l.enQueue("www.padre.com", 0);
@@ -78,4 +77,5 @@ public class ListaUrls<dp> extends ListaSdoble{
         l.enQueue("www.hijo.com", 2);
         l.print();
     }
+    * */
 }
