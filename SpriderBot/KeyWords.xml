@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<lista_busquedas>
+<Palabra dato="hola">
+<Url>www.wikipedia.org/java/oracle/sunMicroSystem</Url>
+<cantidad_aparecido>4</cantidad_aparecido>
+<Url>www.stackoverflow.net/ask/Hola_mundo</Url>
+<cantidad_aparecido>3</cantidad_aparecido>
+</Palabra>
+<Palabra dato="mundo">
+<Url>www.wikipedia.org/java/oracle/Micro_Sun_System</Url>
+<cantidad_aparecido>3</cantidad_aparecido>
+<Url>www.stackoverflow.net/ask/Hola_mundo</Url>
+<cantidad_aparecido>5</cantidad_aparecido>
+</Palabra>
+<Palabra dato="nueva">
+<Url>www.wikipedia.org/java/oracle/sun_Micro_System</Url>
+<cantidad_aparecido>4</cantidad_aparecido>
+<Url>www.google.com/pq?=/?como_hacer_nueva_carpeta</Url>
+<cantidad_aparecido>4</cantidad_aparecido>
+</Palabra>
+<Palabra dato="lista">
+<Url>www.wikipedia.org/java/oracle/sun_Micro_System</Url>
+<cantidad_aparecido>4</cantidad_aparecido>
+<Url>www.oracleSun.org/docs/documentation/Java_8/Listas</Url>
+<cantidad_aparecido>7</cantidad_aparecido>
+</Palabra>
+</lista_busquedas>

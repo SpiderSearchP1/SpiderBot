@@ -74,6 +74,28 @@ public class ListaSdoble <dp>{
     }
     
     /**
+     * metodo para devolver la cantidad numerica de datos encontrados 
+     * en la lista 
+     * @return i;
+     */
+    public int getLength(){
+        Nodo tmp=_head;
+        int i =0;
+        while(tmp!=null){
+            i++;
+            tmp= tmp.getNext();
+        }
+        return i;
+    }
+    
+    public void print(){
+        Nodo tmp=_head;
+        while(tmp!=null){
+            System.out.println(tmp.getData());
+            tmp=tmp.getNext();
+        }
+    }
+    /**
      * hace casi lo mismo que el metodo de borrado pero no lo elimina, solo
      * devuelve el valor del nodo.
      * @param dato

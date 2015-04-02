@@ -16,6 +16,11 @@ public class ListaKeywords <dp> extends ListaSdoble{
     private NodoKeyword _head;
     private NodoKeyword _tail;
     
+    @Override
+    public NodoKeyword getHead() {
+        return _head;
+    }
+    
     /**
      * metodo para enconlar especial que establece el padre o los
      * padres de cada uno de los Nodos.
@@ -61,6 +66,16 @@ public class ListaKeywords <dp> extends ListaSdoble{
      */
     public void setPadre(String UrlPadre){
         _tail.setPadre(UrlPadre);
+    }
+    
+    public int lengthLista(){
+        int i=0;
+        NodoKeyword tmp= _head;
+        while(tmp!=null){
+            tmp=(NodoKeyword)tmp.getNext();
+            i++;
+        }
+        return i;
     }
     
     /**

@@ -69,16 +69,37 @@ public class NodoKeyword <dp> extends Nodo{
         upCount();
     }
     
+    /**
+     * obtiene los padres urls del nodo
+     * @return Urlpadre;
+     */
     public ListaSdoble getPadres(){
         return Urlpadre;
     }
     
+    public ListaSdoble getCont(){
+        return countPpage;
+    }
     /**
      * metodo para aumentar la cuenta de la cantidad de veces que 
      * se encontro la palabra en la pagina indicada.
      */
     public void upCount(){
         indiceCt.setData((int)indiceCt.getData()+1);
+    }
+    
+    /**
+     * retorna la cantidad de padres que existen en un nodo
+     * @return 
+     */
+    public int LengthP(){
+        Nodo tmp= Urlpadre.getHead();
+        int i=0;
+        while(tmp!=null){
+            i++;
+            tmp=tmp.getNext();
+        }
+        return i;
     }
     
     /**

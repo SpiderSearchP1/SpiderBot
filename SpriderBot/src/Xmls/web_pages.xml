@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <targets>
+        <url>www.google.com</url>
+        <url>www.wikipedia.org</url> 
+    </targets>
+    <spider>
+        <maxthreads>20</maxthreads>
+        <recursivity>10</recursivity>
+        <reindex>56000</reindex>
+    </spider>
+</root>

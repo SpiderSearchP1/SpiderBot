@@ -38,7 +38,7 @@ public class SpiderBot {
         lectorXml.readAll(0);
         extrac(lectorXml.getSpAtri());
         listUrls=lectorXml.getUrls();
-        setConnect();
+        //setConnect();
     }
     
     /**

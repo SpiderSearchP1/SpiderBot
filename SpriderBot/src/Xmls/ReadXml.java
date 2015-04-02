@@ -42,10 +42,10 @@ public class ReadXml {
      */
     public void readAll(int diferencial){
         try{
-            this.path=new File("C:\\Users\\Ellioth\\Documents\\NetBeansProjects\\New Folder\\SpriderBot\\src\\Xmls\\WebPages.xml");
+            //path=new File("\\Xmls\\WebPages.xml");
             Dfactory = DocumentBuilderFactory.newInstance();
             Dbuilder= Dfactory.newDocumentBuilder();
-            docu= Dbuilder.parse(this.path);
+            docu= Dbuilder.parse("web_pages.xml");
             docu.getDocumentElement().normalize();
             if(diferencial==1){
                 NodeList lista = docu.getElementsByTagName("targets");
