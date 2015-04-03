@@ -36,8 +36,10 @@ public class Servidor {
     public int getPuerto(){
         return puerto;
     }
+    /**
     public static void main(String [] args) throws IOException{
             Servidor SR= new Servidor();
-    }
+    }*/
+    
 }
 

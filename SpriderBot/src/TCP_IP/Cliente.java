@@ -61,10 +61,10 @@ public class Cliente extends Thread{
     public void setBandera(boolean bandera){
         this.bandera= bandera;
     }
-    
+    /**
     public static void main(String[] args) {
         Cliente id= new Cliente("192.168.1.104", 5005);
         id.start();
-    }
-   
+    }*/
+    
 }
