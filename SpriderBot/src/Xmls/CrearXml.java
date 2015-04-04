@@ -40,7 +40,7 @@ public class CrearXml {
     private Element Cont;
     
     /**
-     * en el contructor llama inicializa todo para ir creando el xml
+     * en el constructor llama, inicializa todo para ir creando el xml
      * @param keywords 
      * lista que se le ingresa del tipo keywords que contiene todas las 
      * palabras

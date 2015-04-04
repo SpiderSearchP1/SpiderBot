@@ -88,6 +88,10 @@ public class NodoKeyword <dp> extends Nodo{
         indiceCt.setData((int)indiceCt.getData()+1);
     }
     
+    public void setCount(int i){
+        indiceCt.setData(i);
+    }
+    
     /**
      * retorna la cantidad de padres que existen en un nodo
      * @return 

@@ -1,7 +1,11 @@
 package TCP_IP;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
+
 
 /**
  *
@@ -10,7 +14,7 @@ import java.net.*;
 public class MultiServer extends Thread{
     
     private DataInputStream InputData;
-    //private DataOutputStream OutputData;
+    private DataOutputStream OutputData;
     private String MessageIn;
     private Socket socket;
     private int ID;
@@ -64,8 +68,7 @@ public class MultiServer extends Thread{
             }
         }
     }
-
-    /*
+    /**
     public void enviarDato( String mensaje){
         try{
             OutputData.writeUTF(mensaje);
@@ -74,5 +77,4 @@ public class MultiServer extends Thread{
             System.out.println("P"+e.getMessage());
         }
     }*/
-
 }

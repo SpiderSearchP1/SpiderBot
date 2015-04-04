@@ -1,11 +1,14 @@
 package TCP_IP;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  *
  * @author Ellioth
  */
-import java.net.*;
-import java.io.*;
+
 
 
 public class Servidor {

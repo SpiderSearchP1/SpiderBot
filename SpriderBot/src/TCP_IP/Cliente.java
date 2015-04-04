@@ -5,14 +5,17 @@ package TCP_IP;
  * @author Ellioth
  */
 
-import java.io.*;
-import java.net.*;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class Cliente extends Thread{
     
     private Socket socket;
-    //private DataInputStream Datos_Entrada;
+    private DataInputStream Datos_Entrada;
     private DataOutputStream Datos_Salida;
     private int puerto;
     private boolean bandera;
@@ -50,11 +53,17 @@ public class Cliente extends Thread{
         }
     }
     
-    public void getMensaje(String mensaje){
-        this.mensaje=mensaje;
+    public void sendMsj(String mensaje){
+        try{
+            this.mensaje=mensaje;
+            Datos_Salida.writeUTF(this.mensaje);
+            Datos_Salida.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
-    public String setMensaje(){
+    public String getMensaje(){
         return mensaje;
     }
     
