@@ -53,7 +53,7 @@ public class CrearXml {
             doc = Builder.newDocument();
             root = doc.createElement("lista_busquedas");
             doc.appendChild(root);
-            NodoKeyword tmp= keywords.getHead();
+            NodoKeyword tmp= (NodoKeyword)keywords.getHead();
             for(int i=0; i<keywords.lengthLista(); i++){
                 root.appendChild(setBlockPalabra(doc, (String)tmp.getData(), tmp.getPadres(), tmp.getCont()));
                 tmp= (NodoKeyword)tmp.getNext();

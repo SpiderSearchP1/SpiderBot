@@ -17,10 +17,14 @@ public class ListaKeywords <dp> extends ListaSdoble{
     private NodoKeyword _tail;
     
     @Override
-    public NodoKeyword getHead() {
-        return _head;
+    public Nodo getTail() {
+        return _tail;
     }
     
+    @Override
+    public Nodo getHead() {
+        return super.getHead(); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * metodo para enconlar especial que establece el padre o los
      * padres de cada uno de los Nodos.
@@ -38,7 +42,7 @@ public class ListaKeywords <dp> extends ListaSdoble{
             _tail.setPrev(tmp1);
         }
     }
-    
+     
     public void print(){
         NodoKeyword tmp=_head;
         while (tmp!=null){

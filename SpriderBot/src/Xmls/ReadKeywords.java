@@ -7,11 +7,10 @@ package Xmls;
 
 import Logica.ListaKeywords;
 import Logica.NodoKeyword;
-import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -35,17 +34,34 @@ public class ReadKeywords {
         try{
             Dfactory = DocumentBuilderFactory.newInstance();
             Dbuilder= Dfactory.newDocumentBuilder();
-            docu= Dbuilder.parse("web_pages.xml");
+            docu= Dbuilder.parse("KeyWords.xml");
             docu.getDocumentElement().normalize();
             NodeList Lista = docu.getElementsByTagName("Palabra");
-            int indice=0;
-            Node nodoPalabra= Lista.item(indice);
-            while(indice<Lista.getLength()){
-                
-            }
+            //for (int indiceNpalabra=0; indiceNpalabra<Lista.getLength(); indiceNpalabra++){
+                Node nodoPalabra= Lista.item(0);
+                if (nodoPalabra.getNodeType()==Node.ELEMENT_NODE){
+                    Element nodo= (Element) nodoPalabra;
+                    BaseD.enQueue(nodo.getAttribute("dato"),nodo.getElementsByTagName("Url").item(0).getTextContent());
+                    NodoBaseD= (NodoKeyword)BaseD.getTail();
+                    System.out.println(nodo.getElementsByTagName("cantidad_aparecido").item(0).getTextContent()+ "cantida de urls del padre: "+ nodo.getElementsByTagName("Urls").getLength());
+                    //NodoBaseD.setCount(nodo.getElementsByTagName("cantidad_aparecido").item(0).getTextContent());
+                    for (int indiceUrls=1; indiceUrls<nodo.getElementsByTagName("Urls").getLength(); indiceUrls++){
+                        System.out.println("entra en for 2");
+                        NodoBaseD.setPadre(nodo.getElementsByTagName("Url").item(indiceUrls).getTextContent());
+                        NodoBaseD.setCount(nodo.getElementsByTagName("cantidad_aparecido").item(indiceUrls).getTextContent());
+                    }
+                }
+            //}
         }catch(Exception e){
             e.printStackTrace();
         }
+        BaseD.print();
         return BaseD;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println("prueba ");
+        ReadKeywords prueba = new ReadKeywords();
+        prueba.readDatos();
     }
 }

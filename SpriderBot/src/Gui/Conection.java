@@ -9,12 +9,12 @@ package Gui;
  *
  * @author osboxes
  */
-public class HelpScreen extends javax.swing.JFrame {
+public class Conection extends javax.swing.JFrame {
 
     /**
-     * Creates new form HelpScreen
+     * Creates new form Conection
      */
-    public HelpScreen() {
+    public Conection() {
         initComponents();
     }
 
@@ -28,38 +28,56 @@ public class HelpScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        TextIP = new javax.swing.JTextField();
+        TextPort = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        BtnCnt = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        OpMenu = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        OPHelp = new javax.swing.JMenuItem();
         OPBack = new javax.swing.JMenuItem();
         OPOut = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ventana de ayuda");
-        setMinimumSize(new java.awt.Dimension(1121, 940));
+        setTitle("Conectar con el servidor");
+        setMinimumSize(new java.awt.Dimension(751, 396));
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/osboxes/NetBeansProjects/SpiderBot/SpriderBot/pantalla2.JPG")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/osboxes/NetBeansProjects/SpiderBot/SpriderBot/iconoP1.png")); // NOI18N
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(80, 270, 950, 640);
+        jLabel1.setBounds(23, 12, 153, 150);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Puntos\n1. barra de busqueda: nos sirve para buscar la informacion que queramos en la base de datos creada por el spider \n\t            search.\n\n2. Boton de busqueda: se utiliza para realizar una busqueda en base al dato que hayamos buscado.\n\n3. Zona de informacion: esta zona se utiliza para desplegar la infromacion que nos proporciona la base datos con \n\t                respecto a los links que apuntan a cada coindicendia segun las busqueda pedida.\n\n4. Barra de opciones: se tienen dos puntos para la barra de informacion:\n\t          1. Opcion de ayuda: accede al menu de ayuda para la obtencion de informacion de como usar \n\t\t                  la aplicacion.\n\t           2. Opcion de salir: cierra el programa.\n");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 50, 1100, 210);
-
-        jLabel2.setText("Panel de informacion");
+        jLabel2.setText("Realizar conexion con servidor");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 10, 210, 50);
+        jLabel2.setBounds(230, 40, 350, 70);
 
-        OpMenu.setText("Options");
+        TextIP.setToolTipText("Ingrese la IP del servidor");
+        getContentPane().add(TextIP);
+        TextIP.setBounds(300, 150, 280, 35);
+
+        TextPort.setToolTipText("Ingrese el puerto del servidor");
+        getContentPane().add(TextPort);
+        TextPort.setBounds(300, 210, 280, 35);
+
+        jLabel3.setText("IP");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(200, 150, 66, 25);
+
+        jLabel4.setText("Puerto");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(200, 220, 66, 25);
+
+        BtnCnt.setText("Conectar");
+        getContentPane().add(BtnCnt);
+        BtnCnt.setBounds(570, 280, 110, 37);
+
+        jMenu1.setText("Options ");
+
+        OPHelp.setText("Ayuda");
+        jMenu1.add(OPHelp);
 
         OPBack.setText("Devolverse");
         OPBack.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +85,7 @@ public class HelpScreen extends javax.swing.JFrame {
                 OPBackActionPerformed(evt);
             }
         });
-        OpMenu.add(OPBack);
+        jMenu1.add(OPBack);
 
         OPOut.setText("Salir");
         OPOut.addActionListener(new java.awt.event.ActionListener() {
@@ -75,9 +93,9 @@ public class HelpScreen extends javax.swing.JFrame {
                 OPOutActionPerformed(evt);
             }
         });
-        OpMenu.add(OPOut);
+        jMenu1.add(OPOut);
 
-        jMenuBar1.add(OpMenu);
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -86,7 +104,7 @@ public class HelpScreen extends javax.swing.JFrame {
 
     private void OPOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPOutActionPerformed
         // TODO add your handling code here:
-        dispose();
+        System.exit(0);
     }//GEN-LAST:event_OPOutActionPerformed
 
     private void OPBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPBackActionPerformed
@@ -111,32 +129,36 @@ public class HelpScreen extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HelpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HelpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HelpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HelpScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Conection.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new HelpScreen().setVisible(true);
+                new Conection().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCnt;
     private javax.swing.JMenuItem OPBack;
+    private javax.swing.JMenuItem OPHelp;
     private javax.swing.JMenuItem OPOut;
-    private javax.swing.JMenu OpMenu;
+    private javax.swing.JTextField TextIP;
+    private javax.swing.JTextField TextPort;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

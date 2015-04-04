@@ -88,7 +88,7 @@ public class NodoKeyword <dp> extends Nodo{
         indiceCt.setData((int)indiceCt.getData()+1);
     }
     
-    public void setCount(int i){
+    public void setCount(dp i){
         indiceCt.setData(i);
     }
     

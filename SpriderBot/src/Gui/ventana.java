@@ -45,6 +45,7 @@ public class ventana extends javax.swing.JFrame {
         OPOut = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Spider search");
         setMinimumSize(new java.awt.Dimension(950, 680));
         getContentPane().setLayout(null);
 
