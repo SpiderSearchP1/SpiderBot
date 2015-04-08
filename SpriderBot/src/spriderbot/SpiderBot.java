@@ -38,6 +38,10 @@ public class SpiderBot {
         lectorXml.readAll(0);
         extrac(lectorXml.getSpAtri());
         listUrls=lectorXml.getUrls();
+        readPages();
+        for(int i=0; i<maxthreads;i++){
+            
+        }
         //setConnect();
     }
     
@@ -53,20 +57,8 @@ public class SpiderBot {
         maxthreads=(int)tmp.getNext().getNext().getData();
     }
     
-    /**
-     * metodo para crear la coneccion y empezar analizar las urls targets 
-     * proveniente del xml y de esta misma forma va ingresando los 
-     * otros urls que se encuentran al analizar las urls targets
-     */
-    public void setConnect(){
-        try{
-            URl= (String) listUrls.getHead().getData();
-            socket= new  Socket(URl, 80);
-            System.out.println(socket.getInetAddress());
-            socket.close();
-        }catch(IOException e){
-            e.printStackTrace();
-        }    
+    public void readPages(){
+        
     }
     
     /**

@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import TCP_IP.Cliente;
+
 /**
  *
  * @author osboxes
@@ -31,8 +33,13 @@ public class HelpConnect extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        OPMenu = new javax.swing.JMenu();
+        OPBack = new javax.swing.JMenuItem();
+        OPOut = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1100, 670));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Información");
@@ -49,10 +56,42 @@ public class HelpConnect extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon("/home/osboxes/NetBeansProjects/SpiderBot/SpriderBot/pantalla3.png")); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 260, 1010, 540);
+        jLabel2.setBounds(220, 250, 620, 350);
+
+        OPMenu.setText("Options");
+
+        OPBack.setText("Devolverse");
+        OPBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OPBackActionPerformed(evt);
+            }
+        });
+        OPMenu.add(OPBack);
+
+        OPOut.setText("Salir");
+        OPOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OPOutActionPerformed(evt);
+            }
+        });
+        OPMenu.add(OPOut);
+
+        jMenuBar1.add(OPMenu);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void OPOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPOutActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_OPOutActionPerformed
+
+    private void OPBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPBackActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_OPBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -90,8 +129,12 @@ public class HelpConnect extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem OPBack;
+    private javax.swing.JMenu OPMenu;
+    private javax.swing.JMenuItem OPOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables

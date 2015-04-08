@@ -25,7 +25,7 @@ public class MultiServer extends Thread{
         this.ID=ID;
         try{
             InputData= new DataInputStream(socket.getInputStream());
-            //OutputData= new DataOutputStream(socket.getOutputStream());
+            OutputData= new DataOutputStream(socket.getOutputStream());
         }catch(IOException e){
             System.out.println(e);
         }
@@ -50,6 +50,9 @@ public class MultiServer extends Thread{
                     desconectar();
                     bandera=false;
                 }
+                else if(MessageIn.equals("getID")){
+                    enviarDato(String.valueOf(ID));
+                }
                 else {
                     System.out.println("Cliente ID:"+ ID+ ", socket:"+ socket+"; envia mensaje ");
                     try{
@@ -57,8 +60,6 @@ public class MultiServer extends Thread{
                     catch(Exception e){
                         e.printStackTrace();
                     }
-                    /* enviarDato("Mensaje recibido de: "+ ID);
-                    */
                 }
 
             }catch(IOException e){
@@ -68,13 +69,13 @@ public class MultiServer extends Thread{
             }
         }
     }
-    /**
+    
     public void enviarDato( String mensaje){
         try{
             OutputData.writeUTF(mensaje);
-            System.out.println("resultado = "+ datos_entrada.read());
+            System.out.println("resultado = "+ mensaje);
         }catch(IOException e){
-            System.out.println("P"+e.getMessage());
+            System.out.println("error con Cliente ID: "+ID+"descripcion: "+"\n" +e.getMessage());
         }
-    }*/
+    }
 }

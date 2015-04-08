@@ -7,6 +7,7 @@ package Gui;
 
 import Logica.ListaSdoble;
 import Logica.Nodo;
+import TCP_IP.Cliente;
 
 /**
  *
@@ -20,8 +21,13 @@ public class ventana extends javax.swing.JFrame {
     
     private ListaSdoble palabras;
     private HelpScreen ayuda;
+    private Conection connect;
+    private interData SendM;
+    
     public ventana() {
         ayuda= new HelpScreen();
+        palabras= new ListaSdoble();
+        connect= new Conection();
         initComponents();
     }
 
@@ -41,6 +47,7 @@ public class ventana extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         OPMenu = new javax.swing.JMenu();
+        OPConnect = new javax.swing.JMenuItem();
         OPHelp = new javax.swing.JMenu();
         OPOut = new javax.swing.JMenu();
 
@@ -76,6 +83,14 @@ public class ventana extends javax.swing.JFrame {
 
         OPMenu.setText("Options");
 
+        OPConnect.setText("Conectar con servidor");
+        OPConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OPConnectActionPerformed(evt);
+            }
+        });
+        OPMenu.add(OPConnect);
+
         OPHelp.setText("Ayuda");
         OPHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +121,9 @@ public class ventana extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        getTexto();
+        search();
+        setInfo();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void OPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPHelpActionPerformed
@@ -114,23 +132,46 @@ public class ventana extends javax.swing.JFrame {
         ayuda.setVisible(true);
     }//GEN-LAST:event_OPHelpActionPerformed
 
+    private void OPConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPConnectActionPerformed
+        // TODO add your handling code here:
+        connect.setVisible(true);
+    }//GEN-LAST:event_OPConnectActionPerformed
+
+    private void setInfo(){
+        
+    }
     
-    public void getText(){
-        String cadena=SearchInput.getText();
-        String contenedor="";
-        Nodo tmp;
-        int x=0;
-        int y=x+1;
-        while(y<cadena.length()){
-            if(cadena.substring(x, y).equals(" ")){
-                tmp= new Nodo(contenedor);
-                palabras.enQueue(tmp);
-            }
-            else
-                contenedor.concat(cadena.substring(x,y));
-            x=y;
-            y++;
+    private void search() {
+        Nodo tmp=palabras.getHead();
+        while(tmp!=null){
+            SendM.sendMsj((String)tmp.getData());
+            tmp=tmp.getNext();
         }
+    }
+    
+    private void getTexto(){
+        String contenedor="";
+        StringBuilder constructorS= new StringBuilder();
+        int y=1;
+        for(int x=0; x<=SearchInput.getText().length();x++){
+            if(x==SearchInput.getText().length()){
+                contenedor=constructorS.toString();
+                palabras.enQueue(contenedor);
+                break;
+            }
+            else if(SearchInput.getText().substring(x,y).equals(" ")){
+                contenedor=constructorS.toString();
+                palabras.enQueue(contenedor);
+                y++;
+                constructorS.delete(0, constructorS.length());
+            }
+            else{
+                constructorS.append(SearchInput.getText().substring(x,y));
+                y++;
+            }
+        }
+        palabras.print();
+        constructorS.delete(0, constructorS.length());
     }
     
     /**
@@ -169,6 +210,7 @@ public class ventana extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem OPConnect;
     private javax.swing.JMenu OPHelp;
     private javax.swing.JMenu OPMenu;
     private javax.swing.JMenu OPOut;
@@ -179,4 +221,5 @@ public class ventana extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
 }

@@ -5,6 +5,8 @@
  */
 package Gui;
 
+import TCP_IP.Cliente;
+
 /**
  *
  * @author osboxes
@@ -14,8 +16,16 @@ public class Conection extends javax.swing.JFrame {
     /**
      * Creates new form Conection
      */
+    private HelpConnect ayuda;
+    private interData inClient;
     public Conection() {
+        ayuda= new HelpConnect();
+        inClient= new interData();
         initComponents();
+        if(inClient.get_state())
+            StateLabel.setText("sin conexion");
+        else
+            StateLabel.setText("conectado");
     }
 
     /**
@@ -34,6 +44,7 @@ public class Conection extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         BtnCnt = new javax.swing.JButton();
+        StateLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         OPHelp = new javax.swing.JMenuItem();
@@ -52,7 +63,7 @@ public class Conection extends javax.swing.JFrame {
 
         jLabel2.setText("Realizar conexion con servidor");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 40, 350, 70);
+        jLabel2.setBounds(230, 20, 350, 70);
 
         TextIP.setToolTipText("Ingrese la IP del servidor");
         getContentPane().add(TextIP);
@@ -71,12 +82,24 @@ public class Conection extends javax.swing.JFrame {
         jLabel4.setBounds(200, 220, 66, 25);
 
         BtnCnt.setText("Conectar");
+        BtnCnt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCntActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtnCnt);
         BtnCnt.setBounds(570, 280, 110, 37);
+        getContentPane().add(StateLabel);
+        StateLabel.setBounds(220, 90, 450, 40);
 
         jMenu1.setText("Options ");
 
         OPHelp.setText("Ayuda");
+        OPHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OPHelpActionPerformed(evt);
+            }
+        });
         jMenu1.add(OPHelp);
 
         OPBack.setText("Devolverse");
@@ -112,6 +135,27 @@ public class Conection extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_OPBackActionPerformed
 
+    private void OPHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OPHelpActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ayuda.setVisible(true);
+    }//GEN-LAST:event_OPHelpActionPerformed
+
+    private void BtnCntActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCntActionPerformed
+        // TODO add your handling code here:
+        try{
+            String ip= TextIP.getText();
+            int puerto= Integer.parseInt(TextPort.getText());
+            inClient.strartCliente(ip, puerto);
+            if(!inClient.get_state())
+                StateLabel.setText("Conexion exitosa");
+        }catch(Exception e){
+            e.printStackTrace();
+            StateLabel.setText("error de conexion con servidor");
+        }
+        
+    }//GEN-LAST:event_BtnCntActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -152,6 +196,7 @@ public class Conection extends javax.swing.JFrame {
     private javax.swing.JMenuItem OPBack;
     private javax.swing.JMenuItem OPHelp;
     private javax.swing.JMenuItem OPOut;
+    private javax.swing.JLabel StateLabel;
     private javax.swing.JTextField TextIP;
     private javax.swing.JTextField TextPort;
     private javax.swing.JLabel jLabel1;

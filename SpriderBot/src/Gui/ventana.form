@@ -9,6 +9,14 @@
             <Property name="text" type="java.lang.String" value="Options"/>
           </Properties>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="OPConnect">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Conectar con servidor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OPConnectActionPerformed"/>
+              </Events>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="OPHelp">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ayuda"/>
