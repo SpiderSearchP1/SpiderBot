@@ -36,6 +36,11 @@ public class Servidor {
                 System.out.println(e.getMessage());
         }	
     }
+    
+    /**
+     * metodo que devuelve el puerto.
+     * @return 
+     */
     public int getPuerto(){
         return puerto;
     }

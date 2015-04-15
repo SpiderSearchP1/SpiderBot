@@ -12,7 +12,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.util.Scanner;
 
 public class Cliente extends Thread{
     
@@ -32,6 +31,10 @@ public class Cliente extends Thread{
         InDatos= new ListaKeywords();
     }
     
+    /**
+     * metodo thread que arranca el thread y hace que este recibiendo 
+     * los mensajes que le manda el servidor.
+     */
     @Override
     public void run(){
         try{
@@ -55,10 +58,20 @@ public class Cliente extends Thread{
         }
     }
     
+    /**
+     * retorna la lista de datos que va a recibir las busquedas y demas 
+     * datos que se puedan recibir de parte del servidor.
+     * @return 
+     */
     public ListaSdoble extracInData(){
         return InDatos;
     }
     
+    /**
+     * recibe un parametro que es un mensaje Y envia por medio del 
+     * socket el mensaje.
+     * @param mensaje 
+     */
     public void sendMsj(String mensaje){
         try{
             this.mensaje=mensaje;
@@ -69,6 +82,11 @@ public class Cliente extends Thread{
         }
     }
     
+    /**
+     * devuelve el estado del cliente deacuerdo a si este s pudo 
+     * conectar o no.
+     * @return booleano
+     */
     public boolean getStateClient(){
         return socket.isClosed();
     }

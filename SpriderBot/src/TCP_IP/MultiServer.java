@@ -31,6 +31,10 @@ public class MultiServer extends Thread{
         }
     }
 
+    /**
+     * metodo que realiza una desconexion con el cliente que se haya 
+     * inicializado.
+     */
     public void desconectar(){
         try{
             socket.close();
@@ -39,6 +43,10 @@ public class MultiServer extends Thread{
         }
     }
     
+    /**
+     * metodo thread que inicializa una vez que se recibe y acepta 
+     * a un cliente.
+     */
     @Override
     public void run(){
         System.out.println("entro en el run");
@@ -70,6 +78,11 @@ public class MultiServer extends Thread{
         }
     }
     
+    /**
+     * metodo para enviar un mensaje al cliente con el cual se este 
+     * interactuando.
+     * @param mensaje 
+     */
     public void enviarDato( String mensaje){
         try{
             OutputData.writeUTF(mensaje);
