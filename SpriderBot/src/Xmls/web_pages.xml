@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <targets>
-        <url>www.google.com</url>
-        <url>www.wikipedia.org</url> 
+        <url>http://www.google.com</url>
+        <url>http://www.wikipedia.org</url> 
     </targets>
     <spider>
         <maxthreads>20</maxthreads>

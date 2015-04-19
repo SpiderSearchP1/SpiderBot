@@ -48,11 +48,17 @@ public class ListaUrls<dp> extends ListaSdoble{
     /**
      * metodo para borrar los head una vez que una Url ya se haya seleccionado
      */
-    public void deQueue(){
+    public NodoUrl deQueue(){
+        NodoUrl tmp= _head;
         _head=(NodoUrl)_head.getNext();
+        return tmp;
     }
     
-    
+    /**
+     * funcion para imprimir todo el contendio de la lista con la profundidad 
+     * de cada uno de los nodos.
+     */
+    @Override
     public void print(){
         NodoUrl tmp=_head;
         while (tmp!=null){
@@ -62,20 +68,36 @@ public class ListaUrls<dp> extends ListaSdoble{
     }
     
     /**
-     * prueba unitaria para la lista de urls.
-     * @param args 
-    public static void main(String[] args) {
-        ListaUrls l= new ListaUrls();
-        l.enQueue("www.padre.com", 0);
-        l.enQueue("www.padre1.com", 0);
-        l.enQueue("www.padre2.com", 0);
-        l.enQueue("www.padre3.com", 0);
-        l.enQueue("www.hijo.com", 1);
-        l.enQueue("www.hijo1.com", 1);
-        l.enQueue("www.hijo2.com", 1);
-        l.enQueue("www.hijo3.com", 1);
-        l.enQueue("www.hijo.com", 2);
-        l.print();
+     * metodo para ingresar urls no repetidas
+     * @param dato
+     * @param depth 
+     */
+    public void enQueue_none_repeat(dp dato, int depth){
+        NodoUrl tmp= _head;
+        boolean check= false;
+        while(tmp!=null&&!check){
+            if(tmp.getData().equals(dato))
+                check=true;
+            tmp= (NodoUrl)tmp.getNext();
+        }
+        if(!check){
+            enQueue(dato, depth);
+        }
+        else
+            System.out.println("urlrepetida: "+ dato);
     }
-    * */
+    
+    /**
+     * metodo de listaUrls para devolver el largo especifico.
+     * @return int i
+     */
+    public int getLenght(){
+        int i=0;
+        NodoUrl tmp= _head;
+        while(tmp!=null){
+            tmp=(NodoUrl)tmp.getNext();
+            i++;
+        }
+        return i;
+    }
 }

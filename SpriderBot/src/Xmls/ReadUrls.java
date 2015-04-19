@@ -52,8 +52,9 @@ public class ReadUrls {
                 Node nodoL = lista.item(0);
                 if(nodoL.getNodeType()==Node.ELEMENT_NODE){
                     Element elm= (Element)nodoL;
-                    Urls.enQueue(elm.getElementsByTagName("url").item(0).getTextContent(),0);
-                    Urls.enQueue(elm.getElementsByTagName("url").item(1).getTextContent(),0);
+                    for(int i=0; i<elm.getElementsByTagName("url").getLength();i++){
+                        Urls.enQueue(elm.getElementsByTagName("url").item(i).getTextContent(),0);
+                    }
                 }
             }
             else{

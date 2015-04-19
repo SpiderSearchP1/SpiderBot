@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <targets>
-        <url>http://www.google.com:80</url>
-        <url>http://www.wikipedia.org:80</url> 
+        <url>http://www.vogella.com/tutorials/JavaRegularExpressions/article.html</url>
+        <url>http://en.wikipedia.org/wiki/Jimmy_Hoffa</url>
+	<url>http://stackoverflow.com/questions/11263244/java-how-do-i-implement-a-generic-binary-search-tree</url>
+	<url>https://stackoverflow.com/questions/3383152/how-to-find-hyperlink-in-a-webpage-using-java/24156890#24156890</url>
+	<url>http://stackoverflow.com/questions/9825798/how-to-read-a-text-from-a-web-page-with-java</url>
     </targets>
     <spider>
         <maxthreads>20</maxthreads>
